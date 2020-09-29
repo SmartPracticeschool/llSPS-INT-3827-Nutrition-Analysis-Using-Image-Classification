@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  
+<style>
+  ::placeholder {
+    color:rgb(13, 13, 14);
+    opacity:0.8; /* Firefox */
+    font-weight: bold;
+  }
+  </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+  <script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+
+<body style="background-image: url('{{ url_for('static', filename='nt.jpg') }}'); 
+background-repeat:no-repeat;
+background-size:cover;
+height:100vh;
+display:flex;">
+ 
+<div style="float:left">
+<img src=" {{url_for('send_image', filename=image_name)}}" style="width:300px;height:300px;">
+</div></tr>
+<center>
+<h1>
+{{text}}</h1>
+<img src=" {{url_for('static', filename='orange.jpg')}}" style="width:300px;height:650px;">
+</center>
+</head>
+</html>
